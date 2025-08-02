@@ -1,7 +1,7 @@
-import { CreateUserDto } from './entities/CreateUserDto.dto';
+import { CreateUserDto } from './dto/CreateUserDto.dto';
 import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 
 @Controller('users')
 export class UsersController {
@@ -10,6 +10,12 @@ export class UsersController {
   @Get()
   async findAll(): Promise<User[]> {
     const response = await this._usersService.findAll();
+    return response;
+  }
+
+  @Get(':id')
+  async findOne(@Param('id', ParseIntPipe) id: number): Promise<User> {
+    const response = await this._usersService.findOne(id);
     return response;
   }
 

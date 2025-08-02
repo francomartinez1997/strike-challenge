@@ -1,14 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { Role } from '../../role/entities/role.entity';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { VulnerabilityStatus } from '../../common/enums/vulnerability-status.enum';
 import { Criticality } from '../../common/enums/criticality.enum';
 import { User } from '../../users/entities/user.entity';
@@ -16,7 +6,7 @@ import { User } from '../../users/entities/user.entity';
 @Entity('vulnerabilities')
 export class Vulnerability {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ type: 'varchar', nullable: false })
   title: string;
@@ -42,11 +32,11 @@ export class Vulnerability {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToOne(() => User, { nullable: false })
+  @ManyToOne(() => User, { nullable: false, eager: true })
   @JoinColumn({ name: 'reporter_id' })
   reporter: User;
 
-  @ManyToOne(() => User, { nullable: true })
+  @ManyToOne(() => User, { nullable: true, eager: true })
   @JoinColumn({ name: 'assignee_id' })
   assignee?: User;
 }

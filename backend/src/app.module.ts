@@ -5,6 +5,10 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
 import { Role } from './role/entities/role.entity';
+import { Vulnerability } from './vulnerabilities/entities/vulnerabilities.entity';
+import { VulnerabilitiesModule } from './vulnerabilities/vulnerabilities.module';
+import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,10 +19,13 @@ import { Role } from './role/entities/role.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'strikechallenge',
-      entities: [User, Role],
+      entities: [User, Role, Vulnerability],
       synchronize: true,
     }),
+    ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
+    VulnerabilitiesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

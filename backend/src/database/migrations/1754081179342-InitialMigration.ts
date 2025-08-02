@@ -5,7 +5,7 @@ export class InitialMigration1754081179342 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-            CREATE TYPE "public"."roles_name_enum" AS ENUM('ADMIN', 'USER')
+            CREATE TYPE "public"."roles_name_enum" AS ENUM('ADMIN', 'DEVELOPER', 'ANALYST')
         `);
     await queryRunner.query(`
             CREATE TABLE "roles" (
@@ -75,23 +75,6 @@ export class InitialMigration1754081179342 implements MigrationInterface {
             ALTER TABLE "vulnerabilities"
             ADD CONSTRAINT "FK_d6345e49f9c8ddb6c5a624a417b" FOREIGN KEY ("assignee_id") REFERENCES "users"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
         `);
-
-    await queryRunner.query(`
-        INSERT INTO "roles" (name) VALUES ('ADMIN'), ('USER')
-    `);
-
-    const adminRole = await queryRunner.query(`
-        SELECT id FROM roles WHERE name = 'ADMIN'
-    `);
-
-    const adminRoleId = adminRole[0].id;
-
-    const defaultPasswordHash = '$2b$10$x5gKaTDArlv.o2gPFzl6tObXdTGxbZ.5d406e9TOE4h/F7ZsZjx8y'; // claveSegura123
-
-    await queryRunner.query(`
-        INSERT INTO "users" (name, email, password, role_id)
-        VALUES ('Admin Default', 'admin@example.com', '${defaultPasswordHash}', ${adminRoleId})
-    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
