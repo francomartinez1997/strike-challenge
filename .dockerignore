@@ -6,6 +6,8 @@ build
 
 *.log
 
+.npmrc
+
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
