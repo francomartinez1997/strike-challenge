@@ -1,53 +1,44 @@
 # Strike Challenge
 
-Este repositorio contiene una aplicación fullstack compuesta por un backend en **NestJS**, un frontend en **React**, y una base de datos **PostgreSQL**. Todo el entorno se puede levantar fácilmente con **Docker Compose**.
+This repository contains a fullstack application composed of a **NestJS** backend, a **React** frontend, and a **PostgreSQL** database. The entire environment can be easily started using **Docker Compose**.
 
 ---
 
-## Tecnologías
+## Technologies
 
-- Backend: NestJS (TypeScript)
-- Frontend: React + Vite
-- Base de datos: PostgreSQL
-- Docker y Docker Compose
-
----
-
-## Requisitos
-
-- [Docker](https://docs.docker.com/get-docker/) (v20+)
-- [Docker Compose](https://docs.docker.com/compose/) (v2.20+)
+- Backend: NestJS (TypeScript)  
+- Frontend: React + Vite  
+- Database: PostgreSQL  
+- Docker and Docker Compose  
 
 ---
 
-## Instalación rápida
+## Requirements
 
-1. Clona el repositorio:
+- [Docker](https://docs.docker.com/get-docker/) (v20+)  
+- [Docker Compose](https://docs.docker.com/compose/) (v2.20+)  
+
+---
+
+## Quick Installation
+
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/tu-usuario/strike-challenge.git
+git clone https://github.com/your-username/strike-challenge.git
 cd strike-challenge
 ```
 
-2. Levantar todos los servicios con Docker Compose
+2. Start all services with Docker Compose:
 ```bash
 docker-compose up --build
 ```
-3. Esperar que los contenedores inicien correctamente. Al terminar:
-- Frontend disponible en: http://localhost:5173
-- Backend correrá en: http://localhost:3000
-- PostgreSQL correrá en el puerto 5432 con usuario postgres y contraseña postgres
 
+3. Wait for the containers to start properly. Once ready:
+- Frontend available at: http://localhost:5173
+- Backend running at: http://localhost:3000
+- PostgreSQL running on port 5432 with user postgres and password postgres
 
-## Estructura del proyecto
-
-strike-challenge/
-├── backend/         # API NestJS con Dockerfile y código fuente
-├── frontend/        # App React + Vite con Dockerfile y código fuente
-├── docker-compose.yml
-└── README.md
-
-
-# Cómo probar
-- Acceder al frontend en el navegador: http://localhost:5173
-- Consumir la API backend con Postman o Insomnia: http://localhost:3000
+## How to test
+- Access the frontend in your browser: http://localhost:5173
+- Consume the backend API using Postman or Insomnia: http://localhost:3000
