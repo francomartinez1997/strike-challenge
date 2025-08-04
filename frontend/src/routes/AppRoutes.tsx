@@ -4,11 +4,7 @@ import LoginPage from '../features/auth/pages/LoginPage';
 import BoardPage from '../features/board/pages/BoardPage';
 import PrivateRoute from './PrivateRoute';
 import RegisterPage from '../features/auth/pages/RegisterPage';
-
-type AppRoutesProps = {
-  handleThemeChange: () => void;
-  mode: 'light' | 'dark';
-};
+import { AppRoutesProps } from '../types/allTypes';
 
 const AppRoutes: React.FC<AppRoutesProps> = ({ mode, handleThemeChange }) => {
   return (

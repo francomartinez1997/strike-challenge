@@ -48,9 +48,8 @@ const BoardPage: React.FC = () => {
 
     try {
       await patchVulnerability(id, { status: newStatus });
-      console.log(`Vulnerabilidad ${id} actualizada a ${newStatus}`);
     } catch (error) {
-      console.error('Error al actualizar status:', error);
+      console.error('Error while updating status:', error);
     }
   };
 

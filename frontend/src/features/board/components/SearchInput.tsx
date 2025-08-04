@@ -8,7 +8,7 @@ const BoardHeader = () => {
 
   const handleChange = (event: any) => {
     setSearch(event.target.value);
-    console.log('Buscando:', event.target.value);
+    console.log('searching:', event.target.value);
   };
 
   const handleOpen = () => setOpen(true);

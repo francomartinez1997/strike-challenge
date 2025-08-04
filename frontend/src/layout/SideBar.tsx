@@ -49,30 +49,35 @@ const SideBar: React.FC<SideBarProps> = ({ open, handleDrawerClose, drawerWidth 
         }}
         open={open}
       >
-        <Toolbar variant="dense" />
-        <DrawerHeader>
-          <IconButton size="small" onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </DrawerHeader>
-        <List>
-          <ListItemButton
-            sx={{ gap: 2, '&:hover': { backgroundColor: theme.palette.primary.main } }}
-          >
-            <ViewColumnIcon />
-            Board
-          </ListItemButton>
-        </List>
-        <Divider />
-        <List>
-          <ListItemButton
-            onClick={() => setOpenModal(true)}
-            sx={{ gap: 2, '&:hover': { backgroundColor: theme.palette.primary.main } }}
-          >
-            <LogoutIcon />
-            Logout
-          </ListItemButton>
-        </List>
+        <Box display="flex" height="100%" flexDirection="column" justifyContent="space-between">
+          <Box>
+            <Toolbar variant="dense" />
+            <DrawerHeader>
+              <IconButton size="small" onClick={handleDrawerClose}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </DrawerHeader>
+            <List>
+              <ListItemButton
+                sx={{ gap: 2, '&:hover': { backgroundColor: theme.palette.primary.main } }}
+              >
+                <ViewColumnIcon />
+                Board
+              </ListItemButton>
+              <Divider />
+            </List>
+          </Box>
+          <List>
+            <Divider />
+            <ListItemButton
+              onClick={() => setOpenModal(true)}
+              sx={{ gap: 2, '&:hover': { backgroundColor: theme.palette.primary.main } }}
+            >
+              <LogoutIcon />
+              Logout
+            </ListItemButton>
+          </List>
+        </Box>
       </Drawer>
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>
         <Box display="flex" flexDirection="column" alignItems="center" padding={3}>

@@ -70,8 +70,6 @@ export type LoginResponse = {
   };
 };
 
-// estados zustand
-
 export type AuthState = {
   user: User | null;
   token: string | null;
@@ -89,4 +87,9 @@ export type VulnerabilityState = {
   fetchVulnerabilities: () => Promise<void>;
   postVulnerability: (payload: any) => Promise<void>;
   patchVulnerability: (id: number, payload: any) => Promise<void>;
+};
+
+export type AppRoutesProps = {
+  handleThemeChange: () => void;
+  mode: 'light' | 'dark';
 };
