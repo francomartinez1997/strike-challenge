@@ -1,36 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useMemo, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
+import { darkTheme, lightTheme } from './theme/index.ts';
+import AppRoutes from './routes/AppRoutes';
+import { useAuthStore } from './features/auth/store.ts';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const login = useAuthStore(state => state.login);
+  const logout = useAuthStore(state => state.logout);
+  const setIsHydrated = useAuthStore(state => state.setIsHydrated);
+
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const theme = useMemo(() => createTheme(mode === 'dark' ? darkTheme : lightTheme), [mode]);
+  const handleThemeChange = () => setMode(prev => (prev === 'dark' ? 'light' : 'dark'));
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    const userStr = localStorage.getItem('user');
+
+    if (token && userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        login(user, token);
+      } catch {
+        logout();
+      }
+    }
+    setIsHydrated(true);
+  }, [setIsHydrated]);
 
   return (
-    <>
-    
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <AppRoutes mode={mode} handleThemeChange={handleThemeChange} />
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
