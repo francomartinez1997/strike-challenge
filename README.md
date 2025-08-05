@@ -39,6 +39,12 @@ docker-compose up --build
 - Backend running at: http://localhost:3000
 - PostgreSQL running on port 5432 with user postgres and password postgres
 
+## Frontend credentials
+- Admin user     >>>  franco.martinez@strike.com
+- Admin password >>>  password123
+
+Also you can register a new user in "Sign up" modal.
+
 ## How to test
 - Access the frontend in your browser: http://localhost:5173
 - Consume the backend API using Postman or Insomnia: http://localhost:3000
