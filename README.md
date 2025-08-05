@@ -25,7 +25,7 @@ This repository contains a fullstack application composed of a **NestJS** backen
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/strike-challenge.git
+git clone https://github.com/francomartinez1997/strike-challenge
 cd strike-challenge
 ```
 
