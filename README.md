@@ -40,8 +40,8 @@ docker-compose up --build
 - PostgreSQL running on port 5432 with user postgres and password postgres
 
 ## Frontend credentials
-Admin user     >>>  franco.martinez@strike.com
-Admin password >>>  password123
+- Admin user     >>>  franco.martinez@strike.com
+- Admin password >>>  password123
 
 Also you can register a new user in "Sign up" modal.
 
