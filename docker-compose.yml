@@ -26,6 +26,7 @@ services:
       - "3000:3000"
     volumes:
       - /app/node_modules 
+      - strike_backend_node_modules:/app/node_modules
     entrypoint: ["/app/entrypoint.sh"]
     command: ["npm", "run", "start:dev"]
 
@@ -42,3 +43,4 @@ services:
 
 volumes:
   pgdata:
+  strike_backend_node_modules:
